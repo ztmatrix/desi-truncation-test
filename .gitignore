@@ -1,0 +1,8 @@
+# MCMC chains and large intermediates (hosted separately on Zenodo)
+chains/
+*full_planck/
+__pycache__/
+*.pyc
+
+# External packages (installed by cobaya itself)
+packages/

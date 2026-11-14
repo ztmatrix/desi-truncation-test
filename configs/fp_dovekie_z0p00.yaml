@@ -1,0 +1,78 @@
+likelihood:
+  bao.desi_dr2: null
+  planck_2018_highl_plik.TTTEEE_lite: null
+  truncation_sn.TruncatedDESDovekie:
+    cov_file: data/DES-Dovekie/covtot_inv_000.npz
+    data_file: data/DES-Dovekie/DES-Dovekie_HD.csv
+    zcut: 0.0
+output: chains/fp_dovekie_z0p00
+params:
+  A_planck:
+    prior:
+      max: 1.1
+      min: 0.9
+    proposal: 0.001
+    ref: 1.0
+  As:
+    prior:
+      max: 3.5e-09
+      min: 1.2e-09
+    proposal: 2.0e-11
+    ref: 2.1115e-09
+  H0:
+    prior:
+      max: 100
+      min: 20
+    proposal: 0.5
+    ref: 67.4
+  ns:
+    prior:
+      max: 1.2
+      min: 0.8
+    proposal: 0.003
+    ref: 0.965
+  ombh2:
+    prior:
+      max: 0.04
+      min: 0.005
+    proposal: 0.0001
+    ref: 0.02237
+  omch2:
+    prior:
+      max: 0.99
+      min: 0.01
+    proposal: 0.001
+    ref: 0.12
+  tau:
+    prior:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    proposal: 0.003
+    ref: 0.054
+  w:
+    latex: w_0
+    prior:
+      max: 1
+      min: -3
+    proposal: 0.05
+    ref: -1.0
+  wa:
+    latex: w_a
+    prior:
+      max: 5
+      min: -5
+    proposal: 0.2
+    ref: 0.0
+sampler:
+  mcmc:
+    Rminus1_cl_stop: 0.03
+    Rminus1_stop: 0.01
+    drag: true
+    max_samples: 50000
+    max_tries: 10000
+theory:
+  camb:
+    extra_args:
+      dark_energy_model: ppf
+      lens_potential_accuracy: 1

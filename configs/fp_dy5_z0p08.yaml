@@ -1,0 +1,65 @@
+# Full Planck: dy5 zcut=0.08
+theory:
+  camb:
+    extra_args:
+      lens_potential_accuracy: 1
+      dark_energy_model: ppf
+
+likelihood:
+  truncation_sn.TruncatedDESy5:
+    zcut: 0.08
+  bao.desi_dr2:
+  planck_2018_highl_plik.TTTEEE_lite:
+
+params:
+  ombh2:
+    prior: {min: 0.005, max: 0.04}
+    ref: 0.02237
+    proposal: 0.0001
+  omch2:
+    prior: {min: 0.01, max: 0.99}
+    ref: 0.12
+    proposal: 0.001
+  H0:
+    prior: {min: 20, max: 100}
+    ref: 67.4
+    proposal: 0.5
+  tau:
+    prior:
+      dist: norm
+      loc: 0.054
+      scale: 0.007
+    ref: 0.054
+    proposal: 0.003
+  As:
+    prior: {min: 1.2e-9, max: 3.5e-9}
+    ref: 2.1115e-09
+    proposal: 0.02e-9
+  ns:
+    prior: {min: 0.8, max: 1.2}
+    ref: 0.965
+    proposal: 0.003
+  w:
+    prior: {min: -3, max: 1}
+    ref: -1.0
+    proposal: 0.05
+    latex: w_0
+  wa:
+    prior: {min: -5, max: 5}
+    ref: 0.0
+    proposal: 0.2
+    latex: w_a
+  A_planck:
+    prior: {min: 0.9, max: 1.1}
+    ref: 1.0
+    proposal: 0.001
+
+sampler:
+  mcmc:
+    drag: true
+    max_tries: 10000
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.03
+    max_samples: 50000
+
+output: chains/fp_dy5_z0p08
